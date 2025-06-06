@@ -10,9 +10,17 @@ Built by Dillon Sheffield.
 
 - 🗂️ Track job applications (company, title, URL, status)
 - 🌐 Scrape job listings from sites like **We Work Remotely** using a real browser
-- 📄 Auto-fill and store job descriptions
+- 🧠 Smart auto-formatting of scraped job descriptions
+- ✅ Toggle application status (Applied / Not Applied) in real time
 - 💬 (Planned) AI-powered resume tailoring and cover letter generation
+- ⚡ Fast, animated React frontend (Vite + Tailwind + Framer Motion)
 - 🧠 FastAPI backend with SQLite database
+
+---
+
+## 🎥 Demo
+
+![Job Tracker Demo](./demo.gif)
 
 ---
 
@@ -24,6 +32,10 @@ Built by Dillon Sheffield.
 - SQLAlchemy + SQLite
 - BeautifulSoup
 - Selenium + [undetected-chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)
+- React (Vite)
+- Tailwind CSS
+- Framer Motion
+- Axios
 
 ---
 
@@ -36,7 +48,7 @@ git clone https://github.com/your-username/job-tracker.git
 cd job-tracker
 ```
 
-### 2. Create a Virtual Environment
+### 2. Set Up the Backend
 
 ```bash
 python -m venv venv
@@ -52,10 +64,20 @@ pip install -r requirements.txt
 ### 4. Run the App
 
 ```bash
-python app/main.py
+python -m app.main
 ```
 
 Open your browser at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to test the API.
+
+### 5. Set Up the Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Visit: http://localhost:5173 to view the app.
 
 ---
 
@@ -64,6 +86,7 @@ Open your browser at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to
 - `POST /scrape?url=` – Scrape a job listing and store it
 - `GET /jobs` – List all saved jobs
 - `POST /jobs` – Manually add a job
+- `PUT /jobs/{job_id}/status?new_status=Applied|Not Applied` – Toggle job status
 
 ---
 
@@ -78,8 +101,10 @@ https://weworkremotely.com/remote-jobs/sole-bicycles-head-bookkeeper
 ## 📌 Notes
 
 - Chrome must be installed for browser scraping to work
-- Jobs on sites with aggressive bot protection (e.g., Indeed) require full browser automation
+- Jobs on sites with aggressive bot protection (e.g., Indeed) require full browser automation or may block scraping
+- Scraping runs in a real browser using undetected-chromedriver
 - This project uses `undetected-chromedriver` to bypass basic Cloudflare and bot checks
+- Auto-formatting improves readability of pasted job descriptions
 
 ---
 
@@ -88,7 +113,7 @@ https://weworkremotely.com/remote-jobs/sole-bicycles-head-bookkeeper
 - 🧠 Resume tailoring with OpenAI
 - 📄 Export to CSV or Markdown
 - 🏷️ Tag and filter jobs by tech stack or location
-- 🖥️ Add a frontend UI (React or Svelte)
+- 🖥️ Responsive dashboard frontend
 
 ---
 

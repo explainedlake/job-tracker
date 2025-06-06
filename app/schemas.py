@@ -4,7 +4,7 @@ class JobCreate(BaseModel):
     company: str
     title: str
     url: str
-    status: str = "Not Applied"
+    status: str
     description: str
 
 class JobOut(JobCreate):
